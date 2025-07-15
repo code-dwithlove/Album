@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rewinding Her Timeline</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #0f172a 20%, #1e293b 100%);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .container {
+      position: relative;
+      width: 200px;
+      height: 300px;
+    }
+
+    .card {
+      position: absolute;
+      width: 200px;
+      height: 300px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      overflow: hidden;
+      opacity: 0;
+      transform: rotate(0deg) scale(0.95);
+      transform-origin: center;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card img {
+      width: 90%;
+      height: 90%;
+      object-fit: cover;
+      display: block;
+      margin: auto;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    .time-tag {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      font-size: 22px;
+      color: #facc15;
+      font-style: italic;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <div class="time-tag">Tap to rewind her timeline…</div>
+  </div>
+
+  <script>
+    const container = document.getElementById('container');
+    const timeTag = document.querySelector('.time-tag');
+
+    // List of 68 photo paths
+    const photoList = Array.from({ length: 68 }, (_, i) => ({
+      src: `photo${i + 1}.jpg`
+    }));
+
+    let currentIndex = 0;
+
+    document.body.addEventListener('click', () => {
+      timeTag.style.opacity = 0;
+      if (currentIndex < photoList.length) {
+        showNextCard(photoList[currentIndex]);
+        currentIndex++;
+      }
+    });
+
+    function showNextCard(item) {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const rotation = Math.random() * 30 - 18;
+      card.style.transform += ` rotate(${rotation}deg)`;
+
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.onerror = () => img.src = 'images/placeholder.jpg';
+
+      card.appendChild(img);
+      container.appendChild(card);
+
+      requestAnimationFrame(() => {
+        card.style.opacity = 1;
+        card.style.transform += ' scale(1)';
+      });
+    }
+  </script>
+</body>
+</html>
