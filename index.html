@@ -70,9 +70,81 @@
     const timeTag = document.querySelector('.time-tag');
 
     // List of 68 photo paths
-    const photoList = Array.from({ length: 68 }, (_, i) => ({
-      src: `photo${i + 1}.jpg`
-    }));
+    const photoList = [
+  { src: 'images/photo1.jpg' },
+  { src: 'images/photo2.jpg' },
+  { src: 'images/photo3.jpg' },
+  { src: 'images/photo5.jpg' },
+  { src: 'images/photo6.jpg' },
+
+  // Family (shuffled)
+  { src: 'images/IMG-20250503-WA0514.jpg' },
+  { src: 'images/IMG-20250426-WA0006.jpg' },
+  { src: 'images/IMG-20250503-WA0650.jpg' },
+  { src: 'images/IMG-20250503-WA0398.jpg' },
+  { src: 'images/IMG-20250503-WA0517.jpg' },
+  { src: 'images/IMG-20250503-WA0136.jpg' },
+  { src: 'images/IMG-20250503-WA0615.jpg' },
+  { src: 'images/IMG-20250503-WA0594.jpg' },
+  { src: 'images/IMG-20250503-WA0546.jpg' },
+
+  // School (shuffled)
+  { src: 'images/IMG-20250503-WA0438.jpg' },
+  { src: 'images/IMG-20250503-WA0391 (1).jpg' },
+  { src: 'images/IMG-20250503-WA0221.jpg' },
+  { src: 'images/IMG-20250429-WA0004.jpg' },
+  { src: 'images/IMG-20250503-WA0198.jpg' },
+  { src: 'images/IMG-20250503-WA0384.jpg' },
+
+  // Friends (shuffled)
+  { src: 'images/IMG-20250503-WA0652.jpg' },
+  { src: 'images/IMG-20250503-WA0530.jpg' },
+  { src: 'images/IMG-20250503-WA0400.jpg' },
+  { src: 'images/IMG-20250503-WA0531.jpg' },
+
+  // Other (shuffled)
+  { src: 'images/IMG-20250503-WA0508.jpg' },
+  { src: 'images/IMG-20250503-WA0312.jpg' },
+  { src: 'images/IMG-20250503-WA0207.jpg' },
+  { src: 'images/IMG-20250503-WA0301.jpg' },
+  { src: 'images/IMG-20250503-WA0342 (1).jpg' },
+  { src: 'images/IMG-20250503-WA0314.jpg' },
+  { src: 'images/IMG-20250503-WA0313.jpg' },
+  { src: 'images/IMG-20250503-WA0232.jpg' },
+  { src: 'images/IMG-20250503-WA0242.jpg' },
+  { src: 'images/IMG-20250503-WA0253.jpg' },
+  { src: 'images/IMG-20250503-WA0263.jpg' },
+  { src: 'images/IMG-20250503-WA0277.jpg' },
+  { src: 'images/IMG-20250503-WA0285.jpg' },
+  { src: 'images/IMG-20250503-WA0289.jpg' },
+  { src: 'images/IMG-20250503-WA0304.jpg' },
+  { src: 'images/IMG-20250503-WA0317.jpg' },
+  { src: 'images/IMG-20250503-WA0329.jpg' },
+  { src: 'images/IMG-20250503-WA0336.jpg' },
+  { src: 'images/IMG-20250503-WA0343 (1).jpg' },
+  { src: 'images/IMG-20250503-WA0354.jpg' },
+  { src: 'images/IMG-20250503-WA0364.jpg' },
+  { src: 'images/IMG-20250503-WA0365.jpg' },
+  { src: 'images/IMG-20250503-WA0409.jpg' },
+  { src: 'images/IMG-20250503-WA0423 (1).jpg' },
+  { src: 'images/IMG-20250503-WA0439.jpg' },
+  { src: 'images/IMG-20250503-WA0446.jpg' },
+  { src: 'images/IMG-20250503-WA0488.jpg' },
+  { src: 'images/IMG-20250503-WA0511.jpg' },
+  { src: 'images/IMG-20250503-WA0519.jpg' },
+  { src: 'images/IMG-20250503-WA0529.jpg' },
+  { src: 'images/IMG-20250503-WA0560.jpg' },
+  { src: 'images/IMG-20250503-WA0569.jpg' },
+  { src: 'images/IMG-20250503-WA0648.jpg' },
+  { src: 'images/IMG_20250528_154507.jpg' },
+  { src: 'images/Screenshot_20250607_125557.jpg' },
+  { src: 'images/IMG-20250413-WA0019.jpg' },
+  { src: 'images/IMG-20250413-WA0020.jpg' },
+  { src: 'images/IMG-20250413-WA0043.jpg' },
+  { src: 'images/IMG-20250429-WA0005.jpg' },
+  { src: 'images/IMG-20250503-WA0231.jpg' },
+  { src: 'images/IMG-20250503-WA0249.jpg' }
+];
 
     let currentIndex = 0;
 
