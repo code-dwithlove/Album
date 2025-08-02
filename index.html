@@ -1,3 +1,6 @@
+
+    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +14,44 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at center, #0f172a 20%, #1e293b 100%);
       font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
       cursor: pointer;
+      background-color: #0f172a;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('images/stars.png') repeat;
+      z-index: 0;
+      opacity: 0.15;
+    }
+
+    .moon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 110px;
+      height: 100px;
+      background: radial-gradient(circle, #cbd5e1 30%, transparent 70%);
+      border-radius: 70%;
+      box-shadow: 0 0 20px #cbd5e1, 0 0 50px #cbd5e1 inset;
+      animation: glow 10s infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 25px #cbd5e1, 0 0 50px #cbd5e1 inset; }
+      to   { box-shadow: 0 0 80px #cbd5e1, 0 0 80px #cbd5e1 inset; }
     }
 
     .container {
       position: relative;
       width: 200px;
       height: 300px;
+      z-index: 10;
     }
 
     .card {
@@ -58,9 +89,32 @@
       font-style: italic;
       opacity: 0.85;
     }
+
+    .transition-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 22px;
+      color: #facc15;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      cursor: pointer;
+      animation: fadeIn 2s ease forwards;
+      z-index: 20;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -40%); }
+      to   { opacity: 1; transform: translate(-50%, -50%); }
+    }
   </style>
 </head>
 <body>
+  <div class="stars"></div>
+  <div class="moon"></div>
+  <audio id="bgMusic" src="music(2)(2).mp3" autoplay muted loop></audio>
+
   <div class="container" id="container">
     <div class="time-tag">Tap to rewind her timeline…</div>
   </div>
@@ -69,7 +123,6 @@
     const container = document.getElementById('container');
     const timeTag = document.querySelector('.time-tag');
 
-    // List of 68 photo paths
     const photoList = [
   { src: 'photo1.jpg' },
   { src: 'photo2.jpg' },
@@ -146,8 +199,12 @@
 
     document.body.addEventListener('click', () => {
       timeTag.style.opacity = 0;
+
       if (currentIndex < photoList.length) {
         showNextCard(photoList[currentIndex]);
+        currentIndex++;
+      } else if (currentIndex === photoList.length) {
+        showFinalTransition();
         currentIndex++;
       }
     });
@@ -170,6 +227,25 @@
         card.style.opacity = 1;
         card.style.transform += ' scale(1)';
       });
+    }
+
+    function showFinalTransition() {
+      const t3 = document.createElement('div');
+      t3.className = 'transition-text';
+      t3.textContent = '';
+      document.body.appendChild(t3);
+
+      const text = '🎥 The moments we never filmed';
+      let i = 0;
+      let type = setInterval(() => {
+        t3.textContent += text.charAt(i);
+        i++;
+        if (i === text.length) clearInterval(type);
+      }, 100);
+
+      t3.onclick = () => {
+        window.location.href = 'video-album/index.html'; // Update if needed
+      };
     }
   </script>
 </body>
