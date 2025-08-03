@@ -122,7 +122,10 @@
   <script>
     const container = document.getElementById('container');
     const timeTag = document.querySelector('.time-tag');
-
+window.addEventListener("load", () => {
+  const bgMusic = document.getElementById("bgMusic");
+  bgMusic.play().catch(() => {});
+});
     const photoList = [
   { src: 'photo1.jpg' },
   { src: 'photo2.jpg' },
