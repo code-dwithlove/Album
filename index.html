@@ -113,7 +113,7 @@
 <body>
   <div class="stars"></div>
   <div class="moon"></div>
-  <audio id="bgMusic" src="music(2)(2).mp3" autoplay loop></audio>
+  <audio id="bgMusic" src="music(2)(2).mp3" autoplay muted loop></audio>
 
   <div class="container" id="container">
     <div class="time-tag">Tap to rewind her timeline…</div>
@@ -124,7 +124,20 @@
     const timeTag = document.querySelector('.time-tag');
 window.addEventListener("load", () => {
   const bgMusic = document.getElementById("bgMusic");
-  bgMusic.play().catch(() => {});
+  bgMusic.muted = false;
+  bgMusic.volume = 0;
+
+  // Play on interaction
+  document.body.addEventListener("click", () => {
+    bgMusic.play().catch(() => {});
+    let fade = setInterval(() => {
+      if (bgMusic.volume < 1) {
+        bgMusic.volume += 0.05;
+      } else {
+        clearInterval(fade);
+      }
+    }, 200);
+  }, { once: true });
 });
     const photoList = [
   { src: 'photo1.jpg' },
