@@ -246,23 +246,31 @@ window.addEventListener("load", () => {
     }
 
     function showFinalTransition() {
-      const t3 = document.createElement('div');
-      t3.className = 'transition-text';
-      t3.textContent = '';
-      document.body.appendChild(t3);
+  // Fade out photo stack
+  const container = document.getElementById('container');
+  container.style.transition = 'opacity 1.5s ease';
+  container.style.opacity = 0;
 
-      const text = '🎥 The moments we never filmed';
-      let i = 0;
-      let type = setInterval(() => {
-        t3.textContent += text.charAt(i);
-        i++;
-        if (i === text.length) clearInterval(type);
-      }, 100);
+  // After fade, show final message
+  setTimeout(() => {
+    const t3 = document.createElement('div');
+    t3.className = 'transition-text';
+    t3.textContent = '';
+    document.body.appendChild(t3);
 
-      t3.onclick = () => {
-        window.location.href = 'video-album/index.html'; // Update if needed
-      };
-    }
+    const text = '🎥 The moments we never filmed';
+    let i = 0;
+    let type = setInterval(() => {
+      t3.textContent += text.charAt(i);
+      i++;
+      if (i === text.length) clearInterval(type);
+    }, 100);
+
+    t3.onclick = () => {
+      window.location.href = 'https://code-dwithlove.github.io/Video-Album/'; // adjust if needed
+    };
+  }, 1600); // matches container fade duration
+}
   </script>
 </body>
 </html>
